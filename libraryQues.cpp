@@ -46,13 +46,53 @@ class Book {
 };
 
 class Fiction : public Book {
-    
+    private: 
+        string genre;
+    public: 
+        Fiction() : Book() {
+            genre = "-not defined-";
+        }
+
+        Fiction(string author, string title, int year, string genre) : Book(author, title, year) {           
+            this->genre = genre;
+        }
+
+        string getGenre() {
+            cout << genre << endl;
+            return genre;
+        }
+        
+        void getData() {
+            Book::getData();
+            cout << genre << endl;
+        }
 };
 
 class NonFiction : public Book {
+    private: 
+        string topic;
+    public: 
+        NonFiction() : Book() {
+            this->topic = "-not defined-";
+        }
 
+        NonFiction(string author, string title, int year, string topic) : Book(author, title, year) {
+            
+            this->topic = topic;    
+        }
+
+        string getTopic() {
+            cout << this->topic << endl;
+            return this->topic;
+        }
+
+        void getData() {
+            Book::getData();
+            cout << topic << endl;
+        }
 };
 
 int main() {
-
+    Fiction book1("author", "title", 2024, "genre");
+    book1.getData();
 }
